@@ -55,7 +55,8 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       hostClassName,
       id,
       setAriaDescribedBy = true,
-      tooltipProps
+      tooltipProps,
+      ...otherProps
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
@@ -69,6 +70,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
           hostClassName
         ) }
         ref={ this._tooltipHost }
+        { ...otherProps }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._hideTooltip } }
         onMouseEnter={ this._onTooltipMouseEnter }
